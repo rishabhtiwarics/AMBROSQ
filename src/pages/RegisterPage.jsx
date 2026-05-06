@@ -12,7 +12,7 @@ export default function RegisterPage() {
           autoPlay loop muted playsInline
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         >
-          <source src="/src/assets/hero-video.mp4" type="video/mp4" />
+          <source src="/hero-video.mp4" type="video/mp4" />
         </video>
         <div style={{
           position: 'absolute', inset: 0,
