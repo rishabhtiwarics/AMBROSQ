@@ -10,6 +10,7 @@ export default function ForgotPasswordPage() {
       <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
         <video
           autoPlay loop muted playsInline
+          preload="metadata"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         >
           <source src="/hero-video.mp4" type="video/mp4" />

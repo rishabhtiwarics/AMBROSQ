@@ -37,6 +37,7 @@ export default function ProductCard({ product }) {
         <img 
           src={product.image}
           alt={product.name}
+          loading="lazy"
           className={`absolute inset-0 w-full h-full object-contain p-4 transition-all duration-700 ease-in-out ${
             isHovered && product.hoverImage ? 'opacity-0 scale-110' : 'opacity-100 scale-100'
           }`}
@@ -48,6 +49,7 @@ export default function ProductCard({ product }) {
           <img 
             src={product.hoverImage}
             alt={`${product.name} alternate view`}
+            loading="lazy"
             className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
               isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
             }`}

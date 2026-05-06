@@ -98,6 +98,7 @@ export default function FragranceExcellence() {
             <img 
               src={images[0].src} 
               alt={images[0].name} 
+              loading="lazy"
               className="w-full h-full object-cover transition-all duration-[0.4s] ease-out group-hover:scale-110"
             />
             {/* Inner Border Overlay */}
@@ -134,6 +135,7 @@ export default function FragranceExcellence() {
             <img 
               src={images[1].src} 
               alt={images[1].name} 
+              loading="lazy"
               className="w-full h-full object-cover transition-all duration-[0.4s] ease-out group-hover:scale-110"
             />
             {/* Inner Border Overlay */}
@@ -170,6 +172,7 @@ export default function FragranceExcellence() {
             <img 
               src={images[2].src} 
               alt={images[2].name} 
+              loading="lazy"
               className="w-full h-full object-cover transition-all duration-[0.4s] ease-out group-hover:scale-110"
             />
             {/* Inner Border Overlay */}

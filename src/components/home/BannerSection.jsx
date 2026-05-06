@@ -93,6 +93,7 @@ export default function BannerSection() {
                   <div className="relative w-full h-full border-b-2 border-[#C89B3C]/20 group-hover:border-b-[#C89B3C] transition-all duration-500">
                     <img 
                       src={image} 
+                      loading="lazy"
                       className="w-full h-full object-cover" 
                       alt={`Fragrance Atmosphere ${index + 1}`}
                     />

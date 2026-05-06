@@ -9,7 +9,7 @@ export default function OrderSummary({ items, subtotal, tax, shipping, total }) 
         {items.map(item => (
           <div key={item.id} className="flex gap-4 items-center">
             <div className="w-16 h-20 bg-brand-cream border border-brand-secondary/10 flex-shrink-0">
-              <img src={item.image} className="w-full h-full object-cover" referrerPolicy="no-referrer" alt={item.name} />
+              <img src={item.image} loading="lazy" className="w-full h-full object-cover" referrerPolicy="no-referrer" alt={item.name} />
             </div>
             <div className="flex-grow">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-brand-primary line-clamp-1">{item.name}</h4>

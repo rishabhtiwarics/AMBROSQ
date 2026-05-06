@@ -87,6 +87,7 @@ const ProductDetail = () => {
                 transition={{ duration: 0.8 }}
                 src={images[selectedImage]}
                 alt={product.name}
+                loading="lazy"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -110,7 +111,7 @@ const ProductDetail = () => {
                   className={`w-20 md:w-24 aspect-square border-2 transition-all overflow-hidden ${selectedImage === idx ? 'border-brand-secondary shadow-lg' : 'border-brand-secondary/10 opacity-60'
                     }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src={img} alt="" loading="lazy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </button>
               ))}
             </div>

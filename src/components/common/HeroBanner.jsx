@@ -15,6 +15,7 @@ const HeroBanner = ({
         <img
           src={bgImage}
           alt={title}
+          loading="lazy"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />

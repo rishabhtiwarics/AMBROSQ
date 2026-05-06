@@ -173,6 +173,7 @@ const AboutPage = () => {
                 <img
                   src="/VisibleSensesswiper/Gemini_Generated_Image_ (18).png"
                   alt="Heritage Perfume"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/10" />
@@ -188,6 +189,7 @@ const AboutPage = () => {
                 <img
                   src="/VisibleSensesswiper/Gemini_Generated_Image_ (16).png"
                   alt="Collection Perfume"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/10" />

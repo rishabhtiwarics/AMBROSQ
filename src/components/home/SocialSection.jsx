@@ -93,6 +93,7 @@ export default function SocialSection() {
               >
                 <img 
                   src={img} 
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 transform-gpu will-change-transform scale-[1.01]" 
                   alt={`Social moment ${i}`} 
                   referrerPolicy="no-referrer"
