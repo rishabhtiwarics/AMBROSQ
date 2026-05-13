@@ -2,6 +2,12 @@ import { motion } from 'motion/react';
 import { CATEGORIES } from '../../constants';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+
 
 export default function CategorySection() {
   const navigate = useNavigate();
@@ -41,45 +47,64 @@ export default function CategorySection() {
           </motion.p>
         </div>
 
-        <div className="flex flex-wrap md:flex-nowrap gap-4 justify-center">
-          {CATEGORIES.slice(0, 4).map((cat, idx) => (
-            <motion.div 
-              key={cat.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              onClick={() => navigate('/shop')}
-              className="relative w-full sm:w-[calc(50%-1rem)] md:flex-1 aspect-[4/5] overflow-hidden group cursor-pointer border-b-2 border-transparent hover:border-b-[#C89B3C] shadow-lg shadow-brand-secondary/10 hover:shadow-xl hover:shadow-brand-secondary/30 transition-all duration-500"
-            >
-              {/* Background Image */}
-              <img 
-                src={cat.image} 
-                alt={cat.title} 
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.3] group-hover:grayscale-0"
-              />
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-              
-              {/* Border Overlay */}
-              <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500"></div>
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+          }}
+          className="category-swiper pb-12"
+        >
+          {CATEGORIES.map((cat, idx) => (
+            <SwiperSlide key={cat.id}>
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                onClick={() => navigate('/shop')}
+                className="relative w-full aspect-[4/5] overflow-hidden group cursor-pointer border-b-2 border-transparent hover:border-b-[#C89B3C] shadow-lg shadow-brand-secondary/10 hover:shadow-xl hover:shadow-brand-secondary/30 transition-all duration-500"
+              >
+                {/* Background Image */}
+                <img 
+                  src={cat.image} 
+                  alt={cat.title} 
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.3] group-hover:grayscale-0"
+                />
+                
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                
+                {/* Border Overlay */}
+                <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500"></div>
 
-              {/* Content */}
-              <div className="absolute bottom-10 left-10 right-10 space-y-2">
-                <span className="text-sm text-brand-secondary font-bold">{cat.products}</span>
-                <h3 className="text-white group-hover:text-brand-secondary transition-colors leading-tight">
-                  {cat.title}
-                </h3>
-                <div className="flex items-center gap-2 text-brand-cream/0 group-hover:text-brand-cream transition-opacity opacity-0 group-hover:opacity-100 duration-500">
-                  <span className="text-sm tracking-wide">Shop Collection</span>
-                  <ArrowRight size={14} className="text-brand-secondary" />
+                {/* Content */}
+                <div className="absolute bottom-10 left-10 right-10 space-y-2">
+                  <span className="text-sm text-brand-secondary font-bold">{cat.products}</span>
+                  <h3 className="text-white group-hover:text-brand-secondary transition-colors leading-tight">
+                    {cat.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-brand-cream/0 group-hover:text-brand-cream transition-opacity opacity-0 group-hover:opacity-100 duration-500">
+                    <span className="text-sm tracking-wide">Shop Collection</span>
+                    <ArrowRight size={14} className="text-brand-secondary" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../store/slices/cartSlice';
 import { motion, AnimatePresence } from 'motion/react';
 import GlassmorphicBreadcrumbs from '../components/common/GlassmorphicBreadcrumbs';
-import { Star, ShieldCheck, Truck, RefreshCcw, Sparkles, Hammer, Plus, Minus, ChevronRight, Heart, Share2 } from 'lucide-react';
+import { Star, ShieldCheck, Truck, RefreshCcw, Sparkles, Hammer, Plus, Minus, ChevronRight, Heart, Share2, Wind, Flower2, TreeDeciduous, Info } from 'lucide-react';
 
 // Swiper for Recommendations
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -20,11 +20,19 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState('description');
   const [selectedVariant, setSelectedVariant] = useState('Standard');
 
   const product = useSelector((state) =>
     state.products.items.find(p => p.id === id)
   );
+
+  // Mock data for key notes if not present in product object
+  const keyNotes = {
+    top: ["Bergamot", "Italian Lemon", "Pink Pepper"],
+    heart: ["Damask Rose", "Jasmine Sambac", "Orris"],
+    base: ["Sandalwood", "White Musk", "Ambergris"]
+  };
 
   const allProducts = useSelector((state) => state.products.items);
 
@@ -167,6 +175,28 @@ const ProductDetail = () => {
               </div>
             </div>
 
+            {/* Key Notes Visualization */}
+            <div className="mb-12 space-y-6">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-secondary">Olfactory Journey</p>
+              <div className="grid grid-cols-3 gap-4">
+                 <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
+                    <Wind size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Top Notes</span>
+                    <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.top.join(", ")}</p>
+                 </div>
+                 <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
+                    <Flower2 size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Heart Notes</span>
+                    <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.heart.join(", ")}</p>
+                 </div>
+                 <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
+                    <TreeDeciduous size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Base Notes</span>
+                    <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.base.join(", ")}</p>
+                 </div>
+              </div>
+            </div>
+
             {/* Variant Selection */}
             <div className="space-y-6 mb-12 text-left">
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-secondary">Selection</p>
@@ -233,6 +263,110 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
+
+        {/* Large Detailed Description Section */}
+        <section className="mt-24 md:mt-32">
+          {/* Tab Navigation */}
+          <div className="flex justify-center border-b border-brand-secondary/10 mb-16">
+            {['description', 'specifications', 'usage'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-12 py-6 text-[10px] font-bold uppercase tracking-[0.4em] transition-all relative ${
+                  activeTab === tab ? 'text-brand-primary' : 'text-brand-primary/40 hover:text-brand-primary'
+                }`}
+              >
+                {tab}
+                {activeTab === tab && (
+                  <motion.div 
+                    layoutId="activeTabIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-secondary" 
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <AnimatePresence mode="wait">
+              {activeTab === 'description' && (
+                <motion.div
+                  key="description"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="space-y-8 text-center"
+                >
+                  <h3 className="text-3xl heading-serif text-brand-primary uppercase">The Olfactory Narrative</h3>
+                  <div className="w-20 h-[1px] bg-brand-secondary/40 mx-auto"></div>
+                  <p className="text-brand-dark/70 text-lg leading-relaxed font-medium">
+                    {product.name} is an exquisite manifestation of AMBROSQ's commitment to excellence. Designed for those who seek a scent that is both intimate and commanding, this fragrance evolves beautifully over time, revealing layers of complexity that captivate the senses.
+                  </p>
+                  <p className="text-brand-dark/60 leading-loose">
+                    Inspired by the timeless elegance of artisanal perfumery, we have combined traditional distillation methods with modern olfactory science. The result is a fragrance that not only smells divine but also tells a story of heritage, passion, and the pursuit of perfection. Each bottle is a testament to our dedicated artisans in Grasse, who hand-pour every drop with meticulous care.
+                  </p>
+                </motion.div>
+              )}
+
+              {activeTab === 'specifications' && (
+                <motion.div
+                  key="specifications"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-10"
+                >
+                  <div className="space-y-6">
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-brand-secondary">Technical Details</h4>
+                    <ul className="space-y-4">
+                      <li className="flex justify-between border-b border-brand-secondary/10 pb-4">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary/60">Concentration</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary">Extrait de Parfum</span>
+                      </li>
+                      <li className="flex justify-between border-b border-brand-secondary/10 pb-4">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary/60">Sillage</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary">Strong / Enveloping</span>
+                      </li>
+                      <li className="flex justify-between border-b border-brand-secondary/10 pb-4">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary/60">Longevity</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary">12+ Hours</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="space-y-6">
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-brand-secondary">Sustainability</h4>
+                    <p className="text-xs text-brand-dark/60 leading-loose">
+                      AMBROSQ is committed to ethical sourcing. Our bottles are 100% recyclable, and our ingredients are harvested following fair-trade practices. We prioritize local farmers in Grasse to support the heritage of traditional perfumery.
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              {activeTab === 'usage' && (
+                <motion.div
+                  key="usage"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="flex flex-col md:flex-row gap-12 items-center"
+                >
+                  <div className="w-full md:w-1/3 aspect-square bg-brand-cream border border-brand-secondary/10 flex items-center justify-center">
+                     <Info size={40} className="text-brand-secondary/30" />
+                  </div>
+                  <div className="flex-1 space-y-6">
+                     <h4 className="text-xl heading-serif text-brand-primary uppercase">Application Mastery</h4>
+                     <p className="text-sm text-brand-dark/60 leading-loose">
+                        To maximize the longevity of {product.name}, apply to pulse points where your skin is thinnest: the wrists, neck, and behind the ears. For a more subtle trail, spray into the air and walk through the mist. Avoid rubbing the fragrance into the skin, as this can break down the delicate olfactory molecules.
+                     </p>
+                     <div className="bg-brand-secondary/5 p-6 border-l-2 border-brand-secondary">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-brand-primary italic">"Let the warmth of your pulse unlock the soul of the scent."</p>
+                     </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </section>
 
         {/* Recommended Products Section */}
         <section className="mt-32 pt-24 border-t border-brand-secondary/10">

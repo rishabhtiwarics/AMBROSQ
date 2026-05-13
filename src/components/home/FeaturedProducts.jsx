@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, User, UserRound, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const FeaturedProductCard = ({ product }) => {
   const navigate = useNavigate();
-  
+
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -15,15 +15,15 @@ const FeaturedProductCard = ({ product }) => {
       onClick={() => navigate(`/product/${product.id}`)}
     >
       {/* Background Image */}
-      <img 
-        src={product.image} 
+      <img
+        src={product.image}
         alt={product.name}
         loading="lazy"
         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
       />
-      
+
       <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500 pointer-events-none z-[5]"></div>
-      
+
       {/* Dark Overlay (Gradient like image) */}
       <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 via-transparent to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500" />
 
@@ -49,9 +49,9 @@ export default function FeaturedCollection() {
   const navigate = useNavigate();
 
   const collectionBars = [
-    { title: "Men's Collection", count: "120+ Products" },
-    { title: "Women's Collection", count: "185+ Products" },
-    { title: "Unisex Exclusive", count: "45+ Products" }
+    { title: "Men's Collection", count: "120+ Products", icon: User },
+    { title: "Women's Collection", count: "185+ Products", icon: UserRound },
+    { title: "Unisex Exclusive", count: "45+ Products", icon: Users }
   ];
 
   return (
@@ -59,7 +59,7 @@ export default function FeaturedCollection() {
       <div className="container mx-auto px-4 md:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -71,7 +71,7 @@ export default function FeaturedCollection() {
             </span>
             <div className="w-8 h-[1px] bg-brand-secondary/30"></div>
           </motion.div>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -80,7 +80,7 @@ export default function FeaturedCollection() {
           >
             DISCOVER FEATURED COLLECTION
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -91,17 +91,12 @@ export default function FeaturedCollection() {
           </motion.p>
         </div>
 
-        {/* Dense Grid - 1x6 styled collection - Adjusted breakpoints for balanced rows (divisors of 6) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-16">
-          {products.slice(0, 6).map((product) => (
-            <FeaturedProductCard key={product.id} product={product} />
-          ))}
-        </div>
+
 
         {/* Bottom Category Bars */}
         <div className="flex flex-col md:flex-row gap-4">
           {collectionBars.map((bar, idx) => (
-            <motion.div 
+            <motion.div
               key={bar.title}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -110,9 +105,14 @@ export default function FeaturedCollection() {
               onClick={() => navigate('/shop')}
               className="flex-1 bg-white p-8 flex items-center justify-between group hover:bg-brand-primary hover:text-white transition-all duration-300 border border-brand-secondary/10 shadow-sm cursor-pointer"
             >
-              <div className="text-left">
-                <h3 className="text-xl md:text-2xl group-hover:text-white transition-all uppercase tracking-tight">{bar.title}</h3>
-                <p className="text-[10px] text-brand-primary/40 group-hover:text-white/60 font-bold mt-1 uppercase tracking-widest">{bar.count}</p>
+              <div className="flex items-center gap-5">
+                <div className="w-12 h-12 flex items-center justify-center bg-brand-primary/5 text-[#C89B3C] group-hover:bg-white/20 group-hover:text-white transition-all duration-500">
+                  <bar.icon size={24} strokeWidth={1.5} />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl md:text-2xl group-hover:text-white transition-all uppercase tracking-tight">{bar.title}</h3>
+                  <p className="text-[10px] text-brand-primary/40 group-hover:text-white/60 font-bold mt-1 uppercase tracking-widest">{bar.count}</p>
+                </div>
               </div>
               <button className="w-12 h-12 rounded-none border border-brand-secondary/20 group-hover:border-white/50 flex items-center justify-center text-[#C89B3C] group-hover:text-white transition-all duration-500 transform group-hover:rotate-45 bg-[#C89B3C]/5 group-hover:bg-transparent">
                 <ArrowRight size={20} />
