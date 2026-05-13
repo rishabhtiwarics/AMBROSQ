@@ -90,15 +90,17 @@ export default function CategorySection() {
                 {/* Border Overlay */}
                 <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500"></div>
 
-                {/* Content */}
-                <div className="absolute bottom-10 left-10 right-10 space-y-2">
-                  <span className="text-sm text-brand-secondary font-bold">{cat.products}</span>
-                  <h3 className="text-white group-hover:text-brand-secondary transition-colors leading-tight">
+                {/* Content — dark-glass panel */}
+                <div className="absolute bottom-0 left-0 right-0 dark-glass px-5 py-4 space-y-1 transition-all duration-500 group-hover:bg-brand-primary/90">
+                  <span className="block text-[10px] font-bold tracking-[0.3em] uppercase text-brand-secondary">
+                    {cat.products}
+                  </span>
+                  <h3 className="text-brand-cream group-hover:text-brand-secondary transition-colors duration-300 leading-snug" style={{ fontSize: '1.2rem' }}>
                     {cat.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-brand-cream/0 group-hover:text-brand-cream transition-opacity opacity-0 group-hover:opacity-100 duration-500">
-                    <span className="text-sm tracking-wide">Shop Collection</span>
-                    <ArrowRight size={14} className="text-brand-secondary" />
+                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-1 group-hover:translate-y-0">
+                    <span className="text-[10px] tracking-widest uppercase text-brand-cream/70">Shop Collection</span>
+                    <ArrowRight size={11} className="text-brand-secondary" />
                   </div>
                 </div>
               </motion.div>

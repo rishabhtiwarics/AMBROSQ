@@ -84,9 +84,9 @@ const ProductDetail = () => {
           <GlassmorphicBreadcrumbs items={breadcrumbItems} />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-16">
+        <div className="flex flex-col lg:flex-row gap-10">
           {/* Left Column: Image Gallery */}
-          <div className="w-full lg:w-1/2 flex flex-col md:flex-row-reverse gap-6">
+          <div className="w-full lg:w-1/2 flex flex-col md:flex-row-reverse gap-4">
             <div className="flex-1 relative aspect-[4/5] bg-white border border-brand-secondary/10 overflow-hidden group">
               <motion.img
                 key={selectedImage}
@@ -239,8 +239,8 @@ const ProductDetail = () => {
               <button
                 onClick={handleAddToCart}
                 className={`flex-1 py-4 px-6 text-[10px] font-bold uppercase tracking-[0.3em] transition-all shadow-xl flex items-center justify-center gap-2 ${isAlreadyInCart
-                    ? 'bg-brand-primary text-white hover:bg-brand-secondary active:scale-[0.98]'
-                    : 'bg-brand-secondary text-white hover:bg-brand-primary active:scale-[0.98]'
+                  ? 'bg-brand-primary text-white hover:bg-brand-secondary active:scale-[0.98]'
+                  : 'bg-brand-secondary text-white hover:bg-brand-primary active:scale-[0.98]'
                   }`}
               >
                 {isAlreadyInCart ? 'Go to Cart' : 'Add To Casket'}
@@ -251,8 +251,8 @@ const ProductDetail = () => {
                 onClick={handleBuyNow}
                 disabled={!cartItem}
                 className={`flex-1 border-2 py-[14px] px-6 text-[10px] font-bold uppercase tracking-[0.3em] transition-all shadow-lg flex items-center justify-center gap-2 group ${!!cartItem
-                    ? 'border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white cursor-pointer'
-                    : 'border-gray-200 text-gray-400 cursor-not-allowed opacity-50'
+                  ? 'border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white cursor-pointer'
+                  : 'border-gray-200 text-gray-400 cursor-not-allowed opacity-50'
                   }`}
               >
                 Buy Now

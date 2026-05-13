@@ -81,7 +81,7 @@ export default function ProductCard({ product }) {
               transition={{ delay: 0.1 }}
               onClick={handleAddToCart}
               disabled={isInCart}
-              className={`px-10 py-4 text-sm font-bold transition-colors shadow-lg ${
+              className={`px-10 py-4 text-sm font-bold transition-colors shadow-lg whitespace-nowrap ${
                 isInCart 
                   ? 'bg-brand-secondary text-white' 
                   : 'bg-[#EAE2D1] text-brand-dark hover:bg-brand-secondary hover:text-white'

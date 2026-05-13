@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { motion } from 'motion/react';
-import { ArrowRight, User, UserRound, Users } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const FeaturedProductCard = ({ product }) => {
@@ -49,9 +49,21 @@ export default function FeaturedCollection() {
   const navigate = useNavigate();
 
   const collectionBars = [
-    { title: "Men's Collection", count: "120+ Products", icon: User },
-    { title: "Women's Collection", count: "185+ Products", icon: UserRound },
-    { title: "Unisex Exclusive", count: "45+ Products", icon: Users }
+    {
+      title: "Men's Collection",
+      count: "120+ Products",
+      iconUrl: "/men.png"
+    },
+    {
+      title: "Women's Collection",
+      count: "185+ Products",
+      iconUrl: "/woman.png"
+    },
+    {
+      title: "Unisex Exclusive",
+      count: "45+ Products",
+      iconUrl: "/unisex.png"
+    }
   ];
 
   return (
@@ -106,8 +118,15 @@ export default function FeaturedCollection() {
               className="flex-1 bg-white p-8 flex items-center justify-between group hover:bg-brand-primary hover:text-white transition-all duration-300 border border-brand-secondary/10 shadow-sm cursor-pointer"
             >
               <div className="flex items-center gap-5">
-                <div className="w-12 h-12 flex items-center justify-center bg-brand-primary/5 text-[#C89B3C] group-hover:bg-white/20 group-hover:text-white transition-all duration-500">
-                  <bar.icon size={24} strokeWidth={1.5} />
+                <div className="w-12 h-12 flex items-center justify-center bg-brand-primary/5 group-hover:bg-white/20 transition-all duration-500">
+                  <img
+                    src={bar.iconUrl}
+                    alt={bar.title}
+                    className="w-8 h-8 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                    style={{ filter: 'invert(63%) sepia(60%) saturate(500%) hue-rotate(5deg) brightness(95%) contrast(90%)' }}
+                    onMouseEnter={e => e.currentTarget.style.filter = 'brightness(0) invert(1)'}
+                    onMouseLeave={e => e.currentTarget.style.filter = 'invert(63%) sepia(60%) saturate(500%) hue-rotate(5deg) brightness(95%) contrast(90%)'}
+                  />
                 </div>
                 <div className="text-left">
                   <h3 className="text-xl md:text-2xl group-hover:text-white transition-all uppercase tracking-tight">{bar.title}</h3>
