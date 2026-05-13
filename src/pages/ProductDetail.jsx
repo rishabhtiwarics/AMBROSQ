@@ -84,7 +84,7 @@ const ProductDetail = () => {
           <GlassmorphicBreadcrumbs items={breadcrumbItems} />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-16">
           {/* Left Column: Image Gallery */}
           <div className="w-full lg:w-1/2 flex flex-col md:flex-row-reverse gap-6">
             <div className="flex-1 relative aspect-[4/5] bg-white border border-brand-secondary/10 overflow-hidden group">
@@ -178,22 +178,22 @@ const ProductDetail = () => {
             {/* Key Notes Visualization */}
             <div className="mb-12 space-y-6">
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-secondary">Olfactory Journey</p>
-              <div className="grid grid-cols-3 gap-4">
-                 <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
-                    <Wind size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
-                    <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Top Notes</span>
-                    <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.top.join(", ")}</p>
-                 </div>
-                 <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
-                    <Flower2 size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
-                    <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Heart Notes</span>
-                    <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.heart.join(", ")}</p>
-                 </div>
-                 <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
-                    <TreeDeciduous size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
-                    <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Base Notes</span>
-                    <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.base.join(", ")}</p>
-                 </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
+                  <Wind size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Top Notes</span>
+                  <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.top.join(", ")}</p>
+                </div>
+                <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
+                  <Flower2 size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Heart Notes</span>
+                  <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.heart.join(", ")}</p>
+                </div>
+                <div className="flex flex-col items-center p-4 bg-brand-cream/30 border border-brand-secondary/5 rounded-sm group hover:bg-white hover:shadow-md transition-all">
+                  <TreeDeciduous size={24} className="text-brand-secondary mb-3 group-hover:scale-110 transition-transform" />
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-brand-primary/40 mb-2">Base Notes</span>
+                  <p className="text-[10px] font-bold text-brand-primary text-center leading-tight">{keyNotes.base.join(", ")}</p>
+                </div>
               </div>
             </div>
 
@@ -206,8 +206,8 @@ const ProductDetail = () => {
                     key={variant}
                     onClick={() => setSelectedVariant(variant)}
                     className={`px-8 py-3 text-[10px] font-bold uppercase tracking-widest border transition-all ${selectedVariant === variant
-                        ? 'border-brand-primary bg-brand-primary text-white shadow-lg'
-                        : 'border-brand-secondary/20 text-brand-primary/60 hover:border-brand-secondary hover:text-brand-primary'
+                      ? 'border-brand-primary bg-brand-primary text-white shadow-lg'
+                      : 'border-brand-secondary/20 text-brand-primary/60 hover:border-brand-secondary hover:text-brand-primary'
                       }`}
                   >
                     {variant}
@@ -238,11 +238,10 @@ const ProductDetail = () => {
               {/* Add To Casket Button */}
               <button
                 onClick={handleAddToCart}
-                className={`flex-1 py-4 px-6 text-[10px] font-bold uppercase tracking-[0.3em] transition-all shadow-xl flex items-center justify-center gap-2 ${
-                  isAlreadyInCart
+                className={`flex-1 py-4 px-6 text-[10px] font-bold uppercase tracking-[0.3em] transition-all shadow-xl flex items-center justify-center gap-2 ${isAlreadyInCart
                     ? 'bg-brand-primary text-white hover:bg-brand-secondary active:scale-[0.98]'
                     : 'bg-brand-secondary text-white hover:bg-brand-primary active:scale-[0.98]'
-                }`}
+                  }`}
               >
                 {isAlreadyInCart ? 'Go to Cart' : 'Add To Casket'}
               </button>
@@ -251,11 +250,10 @@ const ProductDetail = () => {
               <button
                 onClick={handleBuyNow}
                 disabled={!cartItem}
-                className={`flex-1 border-2 py-[14px] px-6 text-[10px] font-bold uppercase tracking-[0.3em] transition-all shadow-lg flex items-center justify-center gap-2 group ${
-                  !!cartItem
+                className={`flex-1 border-2 py-[14px] px-6 text-[10px] font-bold uppercase tracking-[0.3em] transition-all shadow-lg flex items-center justify-center gap-2 group ${!!cartItem
                     ? 'border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white cursor-pointer'
                     : 'border-gray-200 text-gray-400 cursor-not-allowed opacity-50'
-                }`}
+                  }`}
               >
                 Buy Now
                 <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -267,20 +265,19 @@ const ProductDetail = () => {
         {/* Large Detailed Description Section */}
         <section className="mt-24 md:mt-32">
           {/* Tab Navigation */}
-          <div className="flex justify-center border-b border-brand-secondary/10 mb-16">
+          <div className="flex flex-wrap justify-center border-b border-brand-secondary/10 mb-16">
             {['description', 'specifications', 'usage'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-12 py-6 text-[10px] font-bold uppercase tracking-[0.4em] transition-all relative ${
-                  activeTab === tab ? 'text-brand-primary' : 'text-brand-primary/40 hover:text-brand-primary'
-                }`}
+                className={`px-6 md:px-12 py-4 md:py-6 text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all relative ${activeTab === tab ? 'text-brand-primary' : 'text-brand-primary/40 hover:text-brand-primary'
+                  }`}
               >
                 {tab}
                 {activeTab === tab && (
-                  <motion.div 
+                  <motion.div
                     layoutId="activeTabIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-secondary" 
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-secondary"
                   />
                 )}
               </button>
@@ -348,19 +345,19 @@ const ProductDetail = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  className="flex flex-col md:flex-row gap-12 items-center"
+                  className="flex flex-col md:flex-row gap-8 md:gap-12 items-center"
                 >
                   <div className="w-full md:w-1/3 aspect-square bg-brand-cream border border-brand-secondary/10 flex items-center justify-center">
-                     <Info size={40} className="text-brand-secondary/30" />
+                    <Info size={40} className="text-brand-secondary/30" />
                   </div>
-                  <div className="flex-1 space-y-6">
-                     <h4 className="text-xl heading-serif text-brand-primary uppercase">Application Mastery</h4>
-                     <p className="text-sm text-brand-dark/60 leading-loose">
-                        To maximize the longevity of {product.name}, apply to pulse points where your skin is thinnest: the wrists, neck, and behind the ears. For a more subtle trail, spray into the air and walk through the mist. Avoid rubbing the fragrance into the skin, as this can break down the delicate olfactory molecules.
-                     </p>
-                     <div className="bg-brand-secondary/5 p-6 border-l-2 border-brand-secondary">
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-brand-primary italic">"Let the warmth of your pulse unlock the soul of the scent."</p>
-                     </div>
+                  <div className="flex-1 space-y-6 text-center md:text-left">
+                    <h4 className="text-xl md:text-2xl heading-serif text-brand-primary uppercase">Application Mastery</h4>
+                    <p className="text-sm text-brand-dark/60 leading-loose">
+                      To maximize the longevity of {product.name}, apply to pulse points where your skin is thinnest: the wrists, neck, and behind the ears. For a more subtle trail, spray into the air and walk through the mist. Avoid rubbing the fragrance into the skin, as this can break down the delicate olfactory molecules.
+                    </p>
+                    <div className="bg-brand-secondary/5 p-6 border-l-2 border-brand-secondary mx-auto md:mx-0 max-w-md">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-brand-primary italic">"Let the warmth of your pulse unlock the soul of the scent."</p>
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -377,8 +374,8 @@ const ProductDetail = () => {
               </h2>
               <div className="w-20 h-[2px] bg-brand-secondary mt-4 mx-auto md:mx-0" />
             </div>
-            <Link 
-              to="/shop" 
+            <Link
+              to="/shop"
               className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-secondary hover:text-brand-primary transition-all border-b border-brand-secondary/20 pb-2 hover:border-brand-primary"
             >
               DISCOVER ALL PIECES
@@ -390,8 +387,8 @@ const ProductDetail = () => {
               modules={[Autoplay, Navigation]}
               spaceBetween={30}
               slidesPerView={1}
-              autoplay={{ 
-                delay: 4000, 
+              autoplay={{
+                delay: 4000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true
               }}
