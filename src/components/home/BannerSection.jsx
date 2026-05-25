@@ -10,12 +10,8 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 
 const bannerImages = [
-  "/VisibleSensesswiper/Gemini_Generated_Image_ (16).png",
-  "/VisibleSensesswiper/Gemini_Generated_Image_ (17).png",
-  "/VisibleSensesswiper/Gemini_Generated_Image_ (18).png",
-  "/VisibleSensesswiper/Gemini_Generated_Image_ (16).png",
-  "/VisibleSensesswiper/Gemini_Generated_Image_ (17).png",
-  "/VisibleSensesswiper/Gemini_Generated_Image_ (18).png"
+  "/VisibleSensesswiper/VisibleSensesswiper1.png",
+  "/VisibleSensesswiper/VisibleSensesswiper2.png",
 ];
 
 export default function BannerSection() {

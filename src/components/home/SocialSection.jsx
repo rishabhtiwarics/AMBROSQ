@@ -5,16 +5,16 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 
 const instagramImages = [
-  "/categryimg/Gemini_Generated_Image_ (3).png",
-  "/categryimg/Gemini_Generated_Image_ (8).png",
-  "/categryimg/Gemini_Generated_Image_ (9).png",
-  "/categryimg/Gemini_Generated_Image_ (10).png",
-  "/categryimg/Gemini_Generated_Image_ (11).png",
-  "/categryimg/Gemini_Generated_Image_ (3).png",
-  "/categryimg/Gemini_Generated_Image_ (8).png",
-  "/categryimg/Gemini_Generated_Image_ (9).png",
-  "/categryimg/Gemini_Generated_Image_ (10).png",
-  "/categryimg/Gemini_Generated_Image_ (11).png"
+  "/product_images/ambrosq1.png",
+  "/product_images/ambrosq2.png",
+  "/product_images/ambrosq3.png",
+  "/product_images/ambrosq4.png",
+  "/product_images/ambrosq5.png",
+  "/product_images/ambrosq6.png",
+  "/product_images/ambrosq7.png",
+  "/product_images/ambrosq8.png",
+  "/product_images/ambrosq1.png",
+  "/product_images/ambrosq2.png"
 ];
 
 export default function SocialSection() {

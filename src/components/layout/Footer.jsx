@@ -1,5 +1,7 @@
 import { Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 
+const logoSrc = '/ambrosqlogo/AMBROSQ.png';
+
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-br from-[#050505] via-[#0a0a0a] to-[#1a1a1a] text-white py-14 md:py-20 border-t border-[#C89B3C]/40 relative overflow-hidden">
@@ -15,7 +17,14 @@ export default function Footer() {
           
           {/* Brand Column - Always Visible */}
           <div className="space-y-6 md:space-y-8 flex flex-col items-center md:items-start">
-            <h3 className="text-[#C89B3C] font-serif text-3xl tracking-[0.25em] font-bold drop-shadow-sm">AMBROSQ</h3>
+            <img
+              src={logoSrc}
+              alt="AMBROSQ"
+              className="h-16 w-auto object-contain opacity-95"
+              style={{
+                filter: 'brightness(0) saturate(100%) invert(70%) sepia(51%) saturate(540%) hue-rotate(2deg) brightness(90%) contrast(88%) drop-shadow(0 0 16px rgba(200,155,60,0.25))',
+              }}
+            />
               <p className="text-white/80 text-sm leading-relaxed max-w-[280px] font-light">
               Crafting the essence of timeless luxury through artisanal perfumery since 1924.
             </p>

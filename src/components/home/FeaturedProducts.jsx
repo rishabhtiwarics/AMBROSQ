@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import ProductCard from '../shop/ProductCard';
 
 const FeaturedProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -103,6 +104,12 @@ export default function FeaturedCollection() {
           </motion.p>
         </div>
 
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 mb-16">
+          {products.slice(0, 4).map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
 
 
         {/* Bottom Category Bars */}

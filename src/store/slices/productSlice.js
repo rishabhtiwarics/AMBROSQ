@@ -8,8 +8,8 @@ const initialState = {
       price: 245,
       description: 'A sophisticated blend of deep oud and mysterious spices.',
       category: 'Parfum',
-      image: '/product_images/Gemini_Generated_Image_(1).png',
-      hoverImage: '/product_images/Gemini_Generated_Image_(4).png',
+      image: '/product_images/ambrosq1.png',
+      hoverImage: '/product_images/ambrosq2.png',
       rating: 5,
     },
     {
@@ -18,8 +18,8 @@ const initialState = {
       price: 320,
       description: 'Pure liquid gold captured in a bottle with hints of saffron.',
       category: 'Extrait de Parfum',
-      image: '/product_images/Gemini_Generated_Image_(5).png',
-      hoverImage: '/product_images/Gemini_Generated_Image_(20).png',
+      image: '/product_images/ambrosq3.png',
+      hoverImage: '/product_images/ambrosq4.png',
       rating: 4,
     },
     {
@@ -28,8 +28,8 @@ const initialState = {
       price: 185,
       description: 'Morning dew on fresh Damask roses with a base of white musk.',
       category: 'Eau de Parfum',
-      image: '/product_images/Gemini_Generated_Image_(21).png',
-      hoverImage: '/product_images/Gemini_Generated_Image_(22).png',
+      image: '/product_images/ambrosq5.png',
+      hoverImage: '/product_images/ambrosq6.png',
       rating: 5,
     },
     {
@@ -38,8 +38,8 @@ const initialState = {
       price: 290,
       description: 'An majestic aroma of amber and royal spices.',
       category: 'Signature',
-      image: '/product_images/Gemini_Generated_Image_(24).png',
-      hoverImage: '/product_images/Gemini_Generated_Image_(25).png',
+      image: '/product_images/ambrosq7.png',
+      hoverImage: '/product_images/ambrosq8.png',
       rating: 5,
     }
   ],

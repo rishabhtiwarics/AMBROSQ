@@ -8,6 +8,8 @@ import CartDrawer from '../cart/CartDrawer';
 
 // Lazy load the LoginForm
 const LoginForm = React.lazy(() => import('../authForm/LoginForm'));
+const logoSrc = '/ambrosqlogo/AMBROSQ.png';
+const logoFilter = 'brightness(0) saturate(100%) invert(48%) sepia(72%) saturate(454%) hue-rotate(4deg) brightness(94%) contrast(88%)';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -308,8 +310,13 @@ export default function Header() {
 
               {/* Logo Area */}
               <div id="logo-container" className="flex-shrink-0 flex items-center lg:justify-center min-h-[60px] lg:flex-1">
-                <Link to="/" className="heading-serif font-bold tracking-[0.2em] cursor-pointer transition-all duration-500 text-xl md:text-4xl text-[#C89B3C]">
-                  AMBROSQ
+                <Link to="/" className="inline-flex items-center cursor-pointer">
+                  <img
+                    src={logoSrc}
+                    alt="AMBROSQ"
+                    className="h-10 md:h-14 w-auto object-contain"
+                    style={{ filter: logoFilter }}
+                  />
                 </Link>
               </div>
       
@@ -386,8 +393,13 @@ export default function Header() {
             >
               {/* Drawer Header */}
               <div className="flex justify-between items-center px-8 py-6 border-b border-brand-secondary/10 bg-white/30 backdrop-blur-sm">
-                <Link to="/" onClick={() => setIsMenuOpen(false)} className="heading-serif text-xl text-[#C89B3C] font-bold tracking-[0.2em]">
-                  AMBROSQ
+                <Link to="/" onClick={() => setIsMenuOpen(false)} className="inline-flex items-center">
+                  <img
+                    src={logoSrc}
+                    alt="AMBROSQ"
+                    className="h-10 w-auto object-contain"
+                    style={{ filter: logoFilter }}
+                  />
                 </Link>
                 <button 
                   onClick={() => setIsMenuOpen(false)} 

@@ -2,6 +2,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import RegisterForm from '../components/authForm/RegisterForm';
 
+const logoSrc = '/ambrosqlogo/AMBROSQ.png';
+const authLogoStyle = {
+  filter: 'brightness(0) saturate(100%) invert(78%) sepia(55%) saturate(525%) hue-rotate(2deg) brightness(95%) contrast(92%) drop-shadow(0 4px 16px rgba(0,0,0,0.65))',
+};
+const mobileLogoStyle = {
+  filter: 'brightness(0) saturate(100%) invert(42%) sepia(59%) saturate(631%) hue-rotate(4deg) brightness(95%) contrast(87%)',
+};
+
 export default function RegisterPage() {
   return (
     <div style={{ minHeight: '100svh', width: '100%', position: 'relative', display: 'flex', overflow: 'hidden' }}>
@@ -22,16 +30,16 @@ export default function RegisterPage() {
       </div>
 
       {/* ── Desktop Logo ──────────────────────────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="absolute top-8 left-10 z-20 hidden lg:block"
-      >
-        <Link to="/" className="font-serif text-white text-3xl tracking-[0.3em] drop-shadow-lg">
-          AMBROSQ
+      <div className="absolute top-8 left-10 z-20 hidden lg:block">
+        <Link to="/" className="inline-flex items-center drop-shadow-lg">
+          <img
+            src={logoSrc}
+            alt="AMBROSQ"
+            className="h-20 w-auto object-contain"
+            style={authLogoStyle}
+          />
         </Link>
-      </motion.div>
+      </div>
 
       {/* ── Left Hero Copy (desktop only) ───────────────────────── */}
       <div className="relative z-10 hidden lg:flex flex-col justify-end pb-20 pl-14 w-[55%] flex-shrink-0">
@@ -86,9 +94,13 @@ export default function RegisterPage() {
 
               {/* Mobile Logo */}
               <div className="lg:hidden" style={{ marginBottom: '1.5rem' }}>
-                <Link to="/" className="font-serif tracking-[0.25em]"
-                  style={{ fontSize: '1.4rem', color: '#0D0D0D', letterSpacing: '0.25em' }}>
-                  AMBROSQ
+                <Link to="/" className="inline-flex items-center">
+                  <img
+                    src={logoSrc}
+                    alt="AMBROSQ"
+                    className="h-12 w-auto object-contain"
+                    style={mobileLogoStyle}
+                  />
                 </Link>
               </div>
 
