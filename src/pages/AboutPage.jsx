@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import HeroBanner from '../components/common/HeroBanner';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Truck, Tag, Headphones, Globe, Droplets, Sparkles } from 'lucide-react';
 import SkeletonImage from '../components/common/SkeletonImage';
@@ -26,8 +26,14 @@ function useCountdown(targetDate) {
 
 /* ─── Parallax Section Component ─────────────────────────────────────────── */
 function ParallaxCountdownSection() {
+  const sectionRef = useRef(null);
   const target = Date.now() + 215 * 24 * 60 * 60 * 1000;
   const { days, hours, mins, secs } = useCountdown(target);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
 
   const units = [
     { value: String(days).padStart(3, '0'), label: 'Days' },
@@ -38,33 +44,36 @@ function ParallaxCountdownSection() {
 
   return (
     <section
-      className="relative w-full overflow-hidden group"
+      ref={sectionRef}
+      className="relative w-full min-h-[520px] overflow-hidden bg-brand-primary group"
       style={{
-        minHeight: '340px',
-        backgroundColor: '#0a0a0a',
+        isolation: 'isolate',
       }}
     >
-      <SkeletonImage
-        src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=1800&q=85&auto=format&fit=crop"
-        alt=""
+      <motion.div
         aria-hidden="true"
-        wrapperClassName="absolute inset-0 w-full h-full"
-        imageClassName="w-full h-full object-cover"
+        className="absolute -inset-y-20 inset-x-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          y: backgroundY,
+          backgroundImage: "url('/perfume-all.png')",
+          willChange: 'transform',
+        }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/55" />
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-70" />
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-70" />
-      <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500 pointer-events-none"></div>
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/90 via-black/70 to-black/35" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/45 via-transparent to-black/20" />
+      <div className="absolute top-0 left-0 right-0 z-20 h-[2px] bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-70" />
+      <div className="absolute bottom-0 left-0 right-0 z-20 h-[2px] bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-70" />
+      <div className="absolute inset-4 md:inset-8 z-20 border border-brand-secondary/30 group-hover:border-brand-secondary/60 transition-colors duration-500 pointer-events-none"></div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-8 py-24 md:py-32 flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="relative z-30 container mx-auto px-4 md:px-8 py-20 md:py-28 min-h-[520px] flex flex-col lg:flex-row items-center justify-between gap-12">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
-          className="text-left max-w-xl"
+          className="text-center lg:text-left max-w-xl"
         >
-          <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#C89B3C] mb-4 flex items-center gap-3">
+          <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#C89B3C] mb-4 flex items-center justify-center lg:justify-start gap-3">
             <span className="block w-8 h-[1px] bg-[#C89B3C]" />
             Best Deals of the Week!
           </p>
@@ -75,7 +84,9 @@ function ParallaxCountdownSection() {
             Hurry! Time Is Running Out<br />
             <span className="italic text-[#C89B3C]">Buy Before It's Gone.</span>
           </h2>
-          <div className="w-16 h-[1px] bg-[#C89B3C]/50 mb-8" />
+          <p className="max-w-md mx-auto lg:mx-0 text-sm md:text-base text-white/70 leading-relaxed mb-8">
+            Limited-time savings on selected AMBROSQ fragrances. Choose your signature scent before this offer fades.
+          </p>
           <Link
             to="/shop"
             className="inline-flex items-center gap-3 bg-[#C89B3C] text-white px-10 py-4 text-[10px] font-bold uppercase tracking-[0.5em] hover:bg-white hover:text-[#0D0D0D] transition-all duration-300 shadow-[0_8px_30px_rgba(200,155,60,0.35)] group"
@@ -92,36 +103,27 @@ function ParallaxCountdownSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: 0.15 }}
-          className="flex items-center gap-4 md:gap-6 lg:gap-8 flex-shrink-0"
+          className="grid w-full grid-cols-2 sm:grid-cols-4 lg:w-auto gap-3 md:gap-4 flex-shrink-0"
         >
           {units.map(({ value, label }, i) => (
-            <React.Fragment key={label}>
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.08 }}
+            <motion.div
+              key={label}
+              className="min-w-0 text-center border border-brand-secondary/25 bg-black/35 backdrop-blur-md px-5 py-6 md:px-6 md:py-7"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 + i * 0.08 }}
+            >
+              <div
+                className="font-serif font-semibold text-white tabular-nums leading-none mb-2"
+                style={{ fontSize: 'clamp(2rem, 5vw, 3.6rem)' }}
               >
-                <div
-                  className="font-serif font-semibold text-white tabular-nums leading-none mb-2"
-                  style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', letterSpacing: '-0.02em' }}
-                >
-                  {value}
-                </div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#C89B3C]">
-                  {label}
-                </p>
-              </motion.div>
-              {i < units.length - 1 && (
-                <span
-                  className="font-serif text-[#C89B3C] self-start mt-2 select-none"
-                  style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)' }}
-                >
-                  :
-                </span>
-              )}
-            </React.Fragment>
+                {value}
+              </div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#C89B3C]">
+                {label}
+              </p>
+            </motion.div>
           ))}
         </motion.div>
       </div>
@@ -323,28 +325,28 @@ const AboutPage = () => {
               <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-brand-secondary z-20" />
               <div className="absolute top-0 left-0 w-[62%] aspect-[3/4] bg-brand-cream border border-brand-secondary/20 overflow-hidden shadow-xl group">
                 <SkeletonImage
-                  src="/VisibleSensesswiper/Gemini_Generated_Image_ (18).png"
+                  src="/fragranceexcellence/three.png"
                   alt="Heritage Perfume"
                   loading="lazy"
-                  wrapperClassName="w-full h-full"
+                  wrapperClassName="relative z-0 w-full h-full"
                   imageClassName="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/10" />
-                <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500"></div>
+                <div className="absolute inset-0  bg-black/10" />
+                <div className="absolute inset-4 border border-brand-secondary/60 group-hover:border-brand-secondary transition-colors duration-500 pointer-events-none shadow-[inset_0_0_0_1px_rgba(200,155,60,0.18)]"></div>
               </div>
               <div
                 className="absolute w-[55%] aspect-[3/4] bg-brand-cream border border-brand-secondary/20 overflow-hidden shadow-2xl group"
                 style={{ right: 0, bottom: 0 }}
               >
                 <SkeletonImage
-                  src="/VisibleSensesswiper/Gemini_Generated_Image_ (16).png"
+                  src="/fragranceexcellence/two.png"
                   alt="Collection Perfume"
                   loading="lazy"
-                  wrapperClassName="w-full h-full"
+                  wrapperClassName="relative z-0 w-full h-full"
                   imageClassName="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/10" />
-                <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500"></div>
+                <div className="absolute inset-4 z-20 border border-brand-secondary/60 group-hover:border-brand-secondary transition-colors duration-500 pointer-events-none shadow-[inset_0_0_0_1px_rgba(200,155,60,0.18)]"></div>
               </div>
               <div style={{ paddingBottom: '95%' }} />
             </motion.div>
