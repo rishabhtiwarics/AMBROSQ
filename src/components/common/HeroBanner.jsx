@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import SkeletonImage from './SkeletonImage';
 
 const HeroBanner = ({
   title,
@@ -12,17 +11,12 @@ const HeroBanner = ({
   return (
     <section className="relative w-full h-[300px] md:h-[450px] flex items-center justify-center overflow-hidden border-b border-brand-secondary/10 group">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <SkeletonImage
-          src={bgImage}
-          alt={title}
-          loading="lazy"
-          wrapperClassName="w-full h-full"
-          imageClassName="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url("${bgImage}")` }}
+      >
         {/* Subtle Light-Dark Overlay for maximum visibility */}
-        <div className="absolute inset-0 bg-black/25"></div>
+        <div className="absolute inset-0 bg-black/18"></div>
       </div>
 
       <div className="absolute inset-x-0 bottom-4 md:bottom-5 z-10 px-4 md:px-8">

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import LoginForm from '../components/authForm/LoginForm';
-import SkeletonImage from '../components/common/SkeletonImage';
 
 const logoSrc = '/ambrosqlogo/AMBROSQ.png';
 const authLogoStyle = {
@@ -33,11 +32,10 @@ export default function LoginPage() {
       {/* ── Desktop Logo (hidden on mobile) ───────────────────────── */}
       <div className="absolute top-8 left-10 z-20 hidden lg:block">
         <Link to="/" className="inline-flex items-center drop-shadow-lg">
-          <SkeletonImage
+          <img
             src={logoSrc}
             alt="AMBROSQ"
-            wrapperClassName="h-20 w-auto"
-            imageClassName="h-20 w-auto object-contain"
+            className="h-20 w-auto object-contain"
             style={authLogoStyle}
           />
         </Link>
@@ -100,11 +98,10 @@ export default function LoginPage() {
                   to="/"
                   className="inline-flex items-center"
                 >
-                  <SkeletonImage
+                  <img
                     src={logoSrc}
                     alt="AMBROSQ"
-                    wrapperClassName="h-12 w-auto"
-                    imageClassName="h-12 w-auto object-contain"
+                    className="h-12 w-auto object-contain"
                     style={mobileLogoStyle}
                   />
                 </Link>
