@@ -1,9 +1,9 @@
 export const CATEGORIES = [
-  { id: 1, title: "Men Perfume", products: "35 Products", image: "/categryimg/Gemini_Generated_Image_ (3).png" },
-  { id: 2, title: "Women Perfume", products: "43 Products", image: "/categryimg/Gemini_Generated_Image_ (8).png" },
-  { id: 3, title: "Unisex Fragrance", products: "16 Products", image: "/categryimg/Gemini_Generated_Image_ (9).png" },
-  { id: 4, title: "Luxury Collection", products: "23 Products", image: "/categryimg/Gemini_Generated_Image_ (10).png" },
-  { id: 5, title: "Attar / Oud", products: "19 Products", image: "/categryimg/Gemini_Generated_Image_ (11).png" },
+  { id: 1, title: "Men Perfume", products: "35 Products", image: "/categryimg/amb1.png" },
+  { id: 2, title: "Women Perfume", products: "43 Products", image: "/categryimg/amb2.png" },
+  { id: 3, title: "Unisex Fragrance", products: "16 Products", image: "/categryimg/amb3.png" },
+  { id: 4, title: "Luxury Collection", products: "23 Products", image: "/categryimg/amb4.png" },
+  { id: 5, title: "Attar / Oud", products: "19 Products", image: "/categryimg/amb5.png" },
 ];
 
 export const FEATURED_IMAGES = [

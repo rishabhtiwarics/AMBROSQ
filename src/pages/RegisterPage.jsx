@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import RegisterForm from '../components/authForm/RegisterForm';
+import SkeletonImage from '../components/common/SkeletonImage';
 
 const logoSrc = '/ambrosqlogo/AMBROSQ.png';
 const authLogoStyle = {
@@ -21,7 +22,7 @@ export default function RegisterPage() {
           preload="metadata"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/authbg.mp4" type="video/mp4" />
         </video>
         <div style={{
           position: 'absolute', inset: 0,
@@ -32,10 +33,11 @@ export default function RegisterPage() {
       {/* ── Desktop Logo ──────────────────────────────────────────── */}
       <div className="absolute top-8 left-10 z-20 hidden lg:block">
         <Link to="/" className="inline-flex items-center drop-shadow-lg">
-          <img
+          <SkeletonImage
             src={logoSrc}
             alt="AMBROSQ"
-            className="h-20 w-auto object-contain"
+            wrapperClassName="h-20 w-auto"
+            imageClassName="h-20 w-auto object-contain"
             style={authLogoStyle}
           />
         </Link>
@@ -95,10 +97,11 @@ export default function RegisterPage() {
               {/* Mobile Logo */}
               <div className="lg:hidden" style={{ marginBottom: '1.5rem' }}>
                 <Link to="/" className="inline-flex items-center">
-                  <img
+                  <SkeletonImage
                     src={logoSrc}
                     alt="AMBROSQ"
-                    className="h-12 w-auto object-contain"
+                    wrapperClassName="h-12 w-auto"
+                    imageClassName="h-12 w-auto object-contain"
                     style={mobileLogoStyle}
                   />
                 </Link>

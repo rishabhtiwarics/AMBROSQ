@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { removeFromCart, updateQuantity } from '../store/slices/cartSlice';
 import GlassmorphicBreadcrumbs from '../components/common/GlassmorphicBreadcrumbs';
+import SkeletonImage from '../components/common/SkeletonImage';
 
 /* ─── Cart Page Item Component (Premium UI) ─────────────────────────────────── */
 const CartPageItem = ({ item }) => {
@@ -31,11 +32,12 @@ const CartPageItem = ({ item }) => {
     >
       {/* Product Image Area */}
       <div className="relative w-full sm:w-40 md:w-48 aspect-[4/5] bg-white border border-brand-secondary/5 overflow-hidden flex-shrink-0">
-        <img 
-          src={item.image} 
-          alt={item.name} 
+        <SkeletonImage
+          src={item.image}
+          alt={item.name}
           loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+          wrapperClassName="w-full h-full group-hover:scale-110 transition-transform duration-1000 ease-out"
+          imageClassName="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />

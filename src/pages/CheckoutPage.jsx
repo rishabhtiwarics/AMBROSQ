@@ -23,6 +23,7 @@ import { clearCart } from '../store/slices/cartSlice';
 import GlassmorphicBreadcrumbs from '../components/common/GlassmorphicBreadcrumbs';
 import LoginForm from '../components/authForm/LoginForm';
 import LuxuryAddressForm from '../components/checkout/LuxuryAddressForm';
+import SkeletonImage from '../components/common/SkeletonImage';
 
 export default function CheckoutPage() {
   const dispatch = useDispatch();
@@ -491,7 +492,13 @@ export default function CheckoutPage() {
                 {items.map(item => (
                   <div key={item.id} className="flex items-center gap-4">
                     <div className="w-10 h-12 bg-white border border-brand-secondary/10 overflow-hidden">
-                      <img src={item.image} alt={item.name} loading="lazy" className="w-full h-full object-cover" />
+                      <SkeletonImage
+                        src={item.image}
+                        alt={item.name}
+                        loading="lazy"
+                        wrapperClassName="w-full h-full"
+                        imageClassName="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="flex-1">
                       <p className="text-[9px] font-bold uppercase tracking-widest text-brand-primary truncate">{item.name}</p>

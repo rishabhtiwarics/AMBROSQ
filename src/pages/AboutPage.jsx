@@ -3,6 +3,7 @@ import HeroBanner from '../components/common/HeroBanner';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Truck, Tag, Headphones, Globe, Droplets, Sparkles } from 'lucide-react';
+import SkeletonImage from '../components/common/SkeletonImage';
 
 /* ─── Countdown Timer Helper ─────────────────────────────────────────────── */
 function useCountdown(targetDate) {
@@ -40,13 +41,16 @@ function ParallaxCountdownSection() {
       className="relative w-full overflow-hidden group"
       style={{
         minHeight: '340px',
-        backgroundImage: `url("https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=1800&q=85&auto=format&fit=crop")`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         backgroundColor: '#0a0a0a',
       }}
     >
+      <SkeletonImage
+        src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=1800&q=85&auto=format&fit=crop"
+        alt=""
+        aria-hidden="true"
+        wrapperClassName="absolute inset-0 w-full h-full"
+        imageClassName="w-full h-full object-cover"
+      />
       <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/55" />
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-70" />
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-70" />
@@ -145,10 +149,11 @@ function FounderSection() {
             className="w-full lg:w-1/2 relative"
           >
             <div className="relative z-10 border border-brand-secondary/30 p-3 md:p-5 bg-brand-primary/50 backdrop-blur-sm shadow-2xl">
-              <img
+              <SkeletonImage
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1200&auto=format&fit=crop"
                 alt="Alexander Quinn - Founder"
-                className="w-full h-[400px] md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out cursor-crosshair"
+                wrapperClassName="w-full h-[400px] md:h-[600px]"
+                imageClassName="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out cursor-crosshair"
               />
               <div className="absolute inset-6 md:inset-10 border border-white/10 pointer-events-none"></div>
             </div>
@@ -317,11 +322,12 @@ const AboutPage = () => {
             >
               <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-brand-secondary z-20" />
               <div className="absolute top-0 left-0 w-[62%] aspect-[3/4] bg-brand-cream border border-brand-secondary/20 overflow-hidden shadow-xl group">
-                <img
+                <SkeletonImage
                   src="/VisibleSensesswiper/Gemini_Generated_Image_ (18).png"
                   alt="Heritage Perfume"
                   loading="lazy"
-                  className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
+                  imageClassName="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/10" />
                 <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500"></div>
@@ -330,11 +336,12 @@ const AboutPage = () => {
                 className="absolute w-[55%] aspect-[3/4] bg-brand-cream border border-brand-secondary/20 overflow-hidden shadow-2xl group"
                 style={{ right: 0, bottom: 0 }}
               >
-                <img
+                <SkeletonImage
                   src="/VisibleSensesswiper/Gemini_Generated_Image_ (16).png"
                   alt="Collection Perfume"
                   loading="lazy"
-                  className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
+                  imageClassName="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/10" />
                 <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500"></div>

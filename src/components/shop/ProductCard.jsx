@@ -4,6 +4,7 @@ import { Star, Heart, Eye } from 'lucide-react';
 import { addToCart } from '../../store/slices/cartSlice';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
+import SkeletonImage from '../common/SkeletonImage';
 
 export default function ProductCard({ product }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -34,25 +35,26 @@ export default function ProductCard({ product }) {
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-[#F8F8F8] mb-6 border-b-2 border-transparent group-hover:border-b-[#C89B3C] transition-all duration-500">
         {/* Primary Image */}
-        <img 
+        <SkeletonImage
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className={`absolute inset-0 w-full h-full object-contain p-4 transition-all duration-700 ease-in-out ${
-            isHovered && product.hoverImage ? 'opacity-0 scale-110' : 'opacity-100 scale-100'
-          }`}
+          wrapperClassName="absolute inset-0 w-full h-full transition-all duration-700 ease-in-out group-hover:scale-105"
+          imageClassName="w-full h-full object-contain p-4"
           referrerPolicy="no-referrer"
         />
 
         {/* Hover Image (Cross-fade) */}
         {product.hoverImage && (
-          <img 
+          <SkeletonImage
             src={product.hoverImage}
             alt={`${product.name} alternate view`}
-            loading="lazy"
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
-              isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+            loading="eager"
+            wrapperClassName={`absolute inset-0 z-10 w-full h-full transition-all duration-700 ease-in-out ${
+              isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}
+            imageClassName="w-full h-full object-contain p-4"
+            skeletonClassName="hidden"
             referrerPolicy="no-referrer"
           />
         )}
@@ -62,7 +64,7 @@ export default function ProductCard({ product }) {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4 bg-brand-primary/5"
+            className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 bg-brand-primary/5"
           >
             {/* Heart Icon Top Left */}
             <div className="absolute top-4 left-4 p-2 bg-white rounded-full shadow-sm">

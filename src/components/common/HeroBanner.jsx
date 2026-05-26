@@ -1,22 +1,24 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import SkeletonImage from './SkeletonImage';
 
 const HeroBanner = ({
   title,
   description,
-  bgImage = "/VisibleSensesswiper/Gemini_Generated_Image_ (17).png",
+  bgImage = "/perfume-all.png",
   breadcrumbItems = []
 }) => {
   return (
     <section className="relative w-full h-[300px] md:h-[450px] flex items-center justify-center overflow-hidden border-b border-brand-secondary/10 group">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <SkeletonImage
           src={bgImage}
           alt={title}
           loading="lazy"
-          className="w-full h-full object-cover"
+          wrapperClassName="w-full h-full"
+          imageClassName="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
         {/* Subtle Light-Dark Overlay for maximum visibility */}

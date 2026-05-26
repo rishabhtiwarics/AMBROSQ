@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Sparkles, Flower2, Heart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import SkeletonImage from '../common/SkeletonImage';
 
 export default function FragranceExcellence() {
   const navigate = useNavigate();
@@ -8,17 +9,17 @@ export default function FragranceExcellence() {
     {
       name: "Rose Blossom",
       tagline: "A delicate floral heart and warm musk",
-      src: "/fragranceexcellence/Gemini_Generated_Image_(6).png",
+      src: "/fragranceexcellence/one.png",
     },
     {
       name: "Noir Elixir",
       tagline: "Mysterious amber and deep woody notes",
-      src: "/fragranceexcellence/Gemini_Generated_Image_.png",
+      src: "/fragranceexcellence/three.png",
     },
     {
       name: "Gold Essence",
       tagline: "Golden citric glow with precious resins",
-      src: "/fragranceexcellence/Gemini_Generated_Image_ (12).png",
+      src: "/fragranceexcellence/two.png",
     }
   ];
 
@@ -95,11 +96,12 @@ export default function FragranceExcellence() {
             onClick={() => navigate('/shop')}
             className="relative aspect-square group overflow-hidden bg-brand-cream border-r border-b border-brand-secondary/5 border-b-2 border-transparent hover:border-b-[#C89B3C] transition-all duration-500 cursor-pointer"
           >
-            <img 
-              src={images[0].src} 
-              alt={images[0].name} 
+            <SkeletonImage
+              src={images[0].src}
+              alt={images[0].name}
               loading="lazy"
-              className="w-full h-full object-cover transition-all duration-[0.4s] ease-out group-hover:scale-110"
+              wrapperClassName="w-full h-full transition-all duration-[0.4s] ease-out group-hover:scale-110"
+              imageClassName="w-full h-full object-cover"
             />
             {/* Inner Border Overlay */}
             <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500 pointer-events-none z-[5]"></div>
@@ -132,11 +134,12 @@ export default function FragranceExcellence() {
             onClick={() => navigate('/shop')}
             className="relative aspect-square group overflow-hidden bg-brand-cream border-b border-brand-secondary/5 border-b-2 border-transparent hover:border-b-[#C89B3C] transition-all duration-500 cursor-pointer"
           >
-            <img 
-              src={images[1].src} 
-              alt={images[1].name} 
+            <SkeletonImage
+              src={images[1].src}
+              alt={images[1].name}
               loading="lazy"
-              className="w-full h-full object-cover transition-all duration-[0.4s] ease-out group-hover:scale-110"
+              wrapperClassName="w-full h-full transition-all duration-[0.4s] ease-out group-hover:scale-110"
+              imageClassName="w-full h-full object-cover"
             />
             {/* Inner Border Overlay */}
             <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500 pointer-events-none z-[5]"></div>
@@ -169,11 +172,12 @@ export default function FragranceExcellence() {
             onClick={() => navigate('/shop')}
             className="relative aspect-square group overflow-hidden bg-brand-cream border-r border-brand-secondary/5 md:order-3 lg:order-none border-b-2 border-transparent hover:border-b-[#C89B3C] transition-all duration-500 cursor-pointer"
           >
-            <img 
-              src={images[2].src} 
-              alt={images[2].name} 
+            <SkeletonImage
+              src={images[2].src}
+              alt={images[2].name}
               loading="lazy"
-              className="w-full h-full object-cover transition-all duration-[0.4s] ease-out group-hover:scale-110"
+              wrapperClassName="w-full h-full transition-all duration-[0.4s] ease-out group-hover:scale-110"
+              imageClassName="w-full h-full object-cover"
             />
             {/* Inner Border Overlay */}
             <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500 pointer-events-none z-[5]"></div>

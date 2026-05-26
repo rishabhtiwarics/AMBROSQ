@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
 import CartDrawer from '../cart/CartDrawer';
+import SkeletonImage from '../common/SkeletonImage';
 
 // Lazy load the LoginForm
 const LoginForm = React.lazy(() => import('../authForm/LoginForm'));
@@ -311,10 +312,11 @@ export default function Header() {
               {/* Logo Area */}
               <div id="logo-container" className="flex-shrink-0 flex items-center lg:justify-center min-h-[60px] lg:flex-1">
                 <Link to="/" className="inline-flex items-center cursor-pointer">
-                  <img
+                  <SkeletonImage
                     src={logoSrc}
                     alt="AMBROSQ"
-                    className="h-10 md:h-14 w-auto object-contain"
+                    wrapperClassName="h-10 md:h-14 w-auto"
+                    imageClassName="h-10 md:h-14 w-auto object-contain"
                     style={{ filter: logoFilter }}
                   />
                 </Link>
@@ -394,10 +396,11 @@ export default function Header() {
               {/* Drawer Header */}
               <div className="flex justify-between items-center px-8 py-6 border-b border-brand-secondary/10 bg-white/30 backdrop-blur-sm">
                 <Link to="/" onClick={() => setIsMenuOpen(false)} className="inline-flex items-center">
-                  <img
+                  <SkeletonImage
                     src={logoSrc}
                     alt="AMBROSQ"
-                    className="h-10 w-auto object-contain"
+                    wrapperClassName="h-10 w-auto"
+                    imageClassName="h-10 w-auto object-contain"
                     style={{ filter: logoFilter }}
                   />
                 </Link>

@@ -13,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import ProductCard from '../components/shop/ProductCard';
+import SkeletonImage from '../components/common/SkeletonImage';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -88,17 +89,22 @@ const ProductDetail = () => {
           {/* Left Column: Image Gallery */}
           <div className="w-full lg:w-1/2 flex flex-col md:flex-row-reverse gap-4">
             <div className="flex-1 relative aspect-[4/5] bg-white border border-brand-secondary/10 overflow-hidden group">
-              <motion.img
+              <motion.div
                 key={selectedImage}
                 initial={{ opacity: 0, scale: 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
+                className="w-full h-full"
+              >
+                <SkeletonImage
                 src={images[selectedImage]}
                 alt={product.name}
                 loading="lazy"
-                className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
+                  imageClassName="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
+              </motion.div>
               {/* Quick Action Icons */}
               <div className="absolute top-6 right-6 flex flex-col gap-4">
                 <button className="w-10 h-10 bg-white shadow-lg flex items-center justify-center hover:bg-brand-secondary hover:text-white transition-all">
@@ -119,7 +125,14 @@ const ProductDetail = () => {
                   className={`w-20 md:w-24 aspect-square border-2 transition-all overflow-hidden ${selectedImage === idx ? 'border-brand-secondary shadow-lg' : 'border-brand-secondary/10 opacity-60'
                     }`}
                 >
-                  <img src={img} alt="" loading="lazy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <SkeletonImage
+                    src={img}
+                    alt=""
+                    loading="lazy"
+                    wrapperClassName="w-full h-full"
+                    imageClassName="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
                 </button>
               ))}
             </div>

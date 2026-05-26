@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../shop/ProductCard';
+import SkeletonImage from '../common/SkeletonImage';
 
 const FeaturedProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -16,11 +17,12 @@ const FeaturedProductCard = ({ product }) => {
       onClick={() => navigate(`/product/${product.id}`)}
     >
       {/* Background Image */}
-      <img
+      <SkeletonImage
         src={product.image}
         alt={product.name}
         loading="lazy"
-        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+        wrapperClassName="w-full h-full transition-transform duration-1000 group-hover:scale-110"
+        imageClassName="w-full h-full object-cover"
       />
 
       <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500 pointer-events-none z-[5]"></div>
@@ -126,10 +128,11 @@ export default function FeaturedCollection() {
             >
               <div className="flex items-center gap-5">
                 <div className="w-12 h-12 flex items-center justify-center bg-brand-primary/5 group-hover:bg-white/20 transition-all duration-500">
-                  <img
+                  <SkeletonImage
                     src={bar.iconUrl}
                     alt={bar.title}
-                    className="w-8 h-8 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                    wrapperClassName="w-8 h-8"
+                    imageClassName="w-8 h-8 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-500"
                     style={{ filter: 'invert(63%) sepia(60%) saturate(500%) hue-rotate(5deg) brightness(95%) contrast(90%)' }}
                     onMouseEnter={e => e.currentTarget.style.filter = 'brightness(0) invert(1)'}
                     onMouseLeave={e => e.currentTarget.style.filter = 'invert(63%) sepia(60%) saturate(500%) hue-rotate(5deg) brightness(95%) contrast(90%)'}

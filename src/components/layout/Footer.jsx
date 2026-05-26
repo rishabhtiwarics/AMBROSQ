@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
+import SkeletonImage from '../common/SkeletonImage';
 
 const logoSrc = '/ambrosqlogo/AMBROSQ.png';
 
@@ -17,10 +18,11 @@ export default function Footer() {
           
           {/* Brand Column - Always Visible */}
           <div className="space-y-6 md:space-y-8 flex flex-col items-center md:items-start">
-            <img
+            <SkeletonImage
               src={logoSrc}
               alt="AMBROSQ"
-              className="h-16 w-auto object-contain opacity-95"
+              wrapperClassName="h-16 w-auto"
+              imageClassName="h-16 w-auto object-contain opacity-95"
               style={{
                 filter: 'brightness(0) saturate(100%) invert(70%) sepia(51%) saturate(540%) hue-rotate(2deg) brightness(90%) contrast(88%) drop-shadow(0 0 16px rgba(200,155,60,0.25))',
               }}

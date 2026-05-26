@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
+import SkeletonImage from '../common/SkeletonImage';
 
 const instagramImages = [
   "/product_images/ambrosq1.png",
@@ -91,11 +92,12 @@ export default function SocialSection() {
               <div 
                 className="relative group w-full aspect-square cursor-pointer overflow-hidden"
               >
-                <img 
-                  src={img} 
+                <SkeletonImage
+                  src={img}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 transform-gpu will-change-transform scale-[1.01]" 
-                  alt={`Social moment ${i}`} 
+                  wrapperClassName="w-full h-full transition-transform duration-1000 group-hover:scale-110 transform-gpu will-change-transform scale-[1.01]"
+                  imageClassName="w-full h-full object-cover"
+                  alt={`Social moment ${i}`}
                   referrerPolicy="no-referrer"
                 />
 

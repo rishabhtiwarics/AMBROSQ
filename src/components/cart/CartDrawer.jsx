@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../../store/slices/cartSlice';
+import SkeletonImage from '../common/SkeletonImage';
 
 export default function CartDrawer({ isOpen, onClose }) {
   const { items } = useSelector((state) => state.cart);
@@ -68,12 +69,13 @@ export default function CartDrawer({ isOpen, onClose }) {
                   >
                     {/* Item Image */}
                     <div className="w-24 h-28 bg-white border border-brand-secondary/10 flex-shrink-0 relative overflow-hidden group-hover:border-brand-secondary/30 transition-all duration-500">
-                      <img 
-                        src={item.image} 
-                        alt={item.name} 
+                      <SkeletonImage
+                        src={item.image}
+                        alt={item.name}
                         loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                        referrerPolicy="no-referrer" 
+                        wrapperClassName="w-full h-full group-hover:scale-110 transition-transform duration-700"
+                        imageClassName="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
                       />
                     </div>
 

@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
+import SkeletonImage from '../common/SkeletonImage';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -87,10 +88,11 @@ export default function BannerSection() {
               {bannerImages.map((image, index) => (
                 <SwiperSlide key={index}>
                   <div className="relative w-full h-full border-b-2 border-[#C89B3C]/20 group-hover:border-b-[#C89B3C] transition-all duration-500">
-                    <img 
-                      src={image} 
+                    <SkeletonImage
+                      src={image}
                       loading="lazy"
-                      className="w-full h-full object-cover" 
+                      wrapperClassName="w-full h-full"
+                      imageClassName="w-full h-full object-cover"
                       alt={`Fragrance Atmosphere ${index + 1}`}
                     />
                     <div className="absolute inset-0 bg-[#C89B3C]/5"></div>

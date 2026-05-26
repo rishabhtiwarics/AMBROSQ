@@ -22,7 +22,7 @@ export default function Hero() {
     },
     {
       id: 2,
-      video: "/videobanner2.mp4",
+      video: "/hero-video.mp4",
       subtitle: "The Art of Scent",
       title: ["Bespoke", "Luxury", "fragrance"],
       description: "Experience the luxury of hand-picked botanicals and rare essences from around the world.",

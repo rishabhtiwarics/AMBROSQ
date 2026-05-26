@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Trash2, Plus, Minus } from 'lucide-react';
 import { removeFromCart, updateQuantity } from '../../store/slices/cartSlice';
+import SkeletonImage from '../common/SkeletonImage';
 
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -9,11 +10,12 @@ export default function CartItem({ item }) {
     <div className="flex gap-6 py-8 border-b border-brand-secondary/10 group">
       {/* Product Image */}
       <div className="w-24 h-32 md:w-32 md:h-40 bg-brand-cream overflow-hidden border border-brand-secondary/5 flex-shrink-0">
-        <img 
-          src={item.image} 
-          alt={item.name} 
+        <SkeletonImage
+          src={item.image}
+          alt={item.name}
           loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          wrapperClassName="w-full h-full group-hover:scale-105 transition-transform duration-700"
+          imageClassName="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
       </div>

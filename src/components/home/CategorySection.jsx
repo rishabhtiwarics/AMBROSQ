@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import SkeletonImage from '../common/SkeletonImage';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -77,28 +78,29 @@ export default function CategorySection() {
                 className="relative w-full aspect-[4/5] overflow-hidden group cursor-pointer border-b-2 border-transparent hover:border-b-[#C89B3C] shadow-lg shadow-brand-secondary/10 hover:shadow-xl hover:shadow-brand-secondary/30 transition-all duration-500"
               >
                 {/* Background Image */}
-                <img 
-                  src={cat.image} 
-                  alt={cat.title} 
+                <SkeletonImage
+                  src={cat.image}
+                  alt={cat.title}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.3] group-hover:grayscale-0"
+                  wrapperClassName="absolute inset-0 z-0 w-full h-full transition-transform duration-700 group-hover:scale-110"
+                  imageClassName="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0"
                 />
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                 
                 {/* Border Overlay */}
-                <div className="absolute inset-4 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500"></div>
+                <div className="absolute inset-4 z-20 border border-brand-secondary/20 group-hover:border-brand-secondary/40 transition-colors duration-500 pointer-events-none"></div>
 
                 {/* Content — dark-glass panel */}
-                <div className="absolute bottom-0 left-0 right-0 dark-glass px-5 py-4 space-y-1 transition-all duration-500 group-hover:bg-brand-primary/90">
+                <div className="absolute bottom-0 left-0 right-0 z-30 dark-glass bg-brand-primary/90 px-5 py-4 space-y-1 transition-all duration-500">
                   <span className="block text-[10px] font-bold tracking-[0.3em] uppercase text-brand-secondary">
                     {cat.products}
                   </span>
                   <h3 className="text-brand-cream group-hover:text-brand-secondary transition-colors duration-300 leading-snug" style={{ fontSize: '1.2rem' }}>
                     {cat.title}
                   </h3>
-                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-1 group-hover:translate-y-0">
+                  <div className="flex items-center gap-2 transition-all duration-500">
                     <span className="text-[10px] tracking-widest uppercase text-brand-cream/70">Shop Collection</span>
                     <ArrowRight size={11} className="text-brand-secondary" />
                   </div>
